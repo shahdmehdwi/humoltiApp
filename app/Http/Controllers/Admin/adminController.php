@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\adminRequest;
+use App\Http\Resources\Admin\adminResource;
 use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,12 @@ class adminController extends Controller
     
      public function index()
      {
-       $admins=Admin::all();
+       $admins= Admin::all();
+        return adminResource::collection($admins);
+
+          /*$admins=Admin::all();
        return response()->json(['data'=>$admins]);
+       return response()->json(['message'=>  $admins]); */
      }
  
      public function store(Request $request)
@@ -39,26 +45,24 @@ class adminController extends Controller
      /**
       * Update the specified resource in storage.
       */
-     public function update(Request $request, string $id)
-     {
-         $input= $request->validate([
-             'name'=>['required'],
-             'email'=>['required', 'email'],
-             'password'=>['required'],
-         ]);
-         $admin= Admin::findOrFail($id);
-         $admin->update($id);
-         return response()->json(['message'=>'admin is updated Successfully']);
+      public function update(adminRequest $request, string $id)
+      {
+
+     $input= $request->validated();
+      $admin= Admin::findOrFail($id);
+      $admin->update($input);
+
+      return response()->json(['message'=>'admin is updated successfully']);
+    }
  
-     }
- 
+    
      /**
       * Remove the specified resource from storage.
       */
-     public function destroy(string $id)
-     {
-         $admin= Admin::findOrFail($id);
-         $admin->delete();
-         return response()->json(['message'=>'admin is deleted Successfully']);
-     }
- }
+      public function destroy(string $id)
+      {
+          $admin= Admin::findOrFail($id);
+          $admin->delete();
+          return response()->json(['message'=>'admin is deleted Successfully']);
+      }
+  }  
