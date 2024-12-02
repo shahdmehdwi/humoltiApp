@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Driver;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class adminRequest extends FormRequest
+class driverRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,14 +21,15 @@ class adminRequest extends FormRequest
      */
     public function rules(): array
     {
-        {
-            return [
-                'name'=> 'required','string',
-                'email' => 'required|email|regex:/^admin_.*@/i',
-                'password'=> 'required',
-                'imageUrl'=> 'image | mimes:png,jpg'
-           
-            ];
-        }
+        return [
+            'name'=> 'required','string',
+            'email' => 'required|email|regex:/^driver_.*@/i',
+            'password'=> 'required',
+            'imagegUrl'=> 'image | mimes:png,jpg',
+            'phoneNumber'=> 'required',
+            'SecondaryNumber' => 'nullable|string',
+            'location'=> 'required',
+
+        ];
     }
 }
