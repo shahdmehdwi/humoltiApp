@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\adminController;
+use App\Http\Controllers\Admin\categoryController;
 use App\Http\Controllers\Admin\driverController;
+use App\Http\Controllers\Admin\paymentController;
 use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,3 +14,7 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('admin', adminController::class);
 Route::apiResource('driver', driverController::class);
+Route::apiResource('payment', paymentController::class);
+Route::apiResource('category', categoryController::class);
+
+
