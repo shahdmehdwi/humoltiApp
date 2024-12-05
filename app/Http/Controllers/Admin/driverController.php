@@ -23,6 +23,7 @@ class driverController extends Controller
      {
          $input= $request->validate([
 
+             'vechileId'=>['required','numeric'],
              'name'=>['required'],
              'email'=>['required','email'],
              'password'=>['required'],
@@ -30,7 +31,6 @@ class driverController extends Controller
              'phoneNumber'=>['required'],
              'SecondaryNumber'=>['nullable'],
              'location'=>['required'],
-
          ]);
          
          Driver::create($input);

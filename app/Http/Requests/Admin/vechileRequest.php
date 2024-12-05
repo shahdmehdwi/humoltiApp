@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class advertisementRequest extends FormRequest
+class vechileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,13 +21,11 @@ class advertisementRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-                'title'=> 'required','string',
-                'description'=> 'required','string',
-                'price'=> 'nullable','numeirc',
-                'priceNow'=> 'nullable','numeirc',
-                'discount'=> 'nullable','numeirc',
-                'imageUrl'=> 'image | mimes:png,jpg'
+        return  [
+            'id' =>$this->id,
+            'driverId' =>$this->driverId,
+            'licensePlate' =>$this->licensePlate,
+            'type' =>$this->type,
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models\Driver;
 
+use App\Models\Admin\Vechile;
 use Illuminate\Database\Eloquent\Model;
 
 class Driver extends Model
@@ -21,6 +22,8 @@ class Driver extends Model
         'remember_token',
     ];
     
+
+   
     /**
      * The attributes that should be cast.
      *

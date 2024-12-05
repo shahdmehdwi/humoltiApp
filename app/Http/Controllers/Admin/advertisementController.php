@@ -16,7 +16,7 @@ class advertisementController extends Controller
     public function index()
     {
         $advertisements=Advertisement::all();
-        return advertisementResource::collection(['data'=> $advertisements]);
+        return advertisementResource::collection($advertisements);
     }
 
     /**
