@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer\Order;
+use App\Http\Resources\Customer\orderResource;
 use Illuminate\Http\Request;
+use App\Models\Customer\Order;
 
 class orderController extends Controller
 {
@@ -13,7 +14,8 @@ class orderController extends Controller
      */
     public function index()
     {
-        //
+        $orders= Order::all();
+        return orderResource::collection($orders);
     }
 
     /**
@@ -29,7 +31,8 @@ class orderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order=Order::findOrFail($id);
+        return response()->json(['data'=> $order]);
     }
 
     /**
@@ -45,8 +48,6 @@ class orderController extends Controller
      */
     public function destroy(string $id)
     {
-        $order= Order::findOrFail($id);
-        $order->delete();
-        return response()->json(['message'=>'order is deleted Successfully']);
+        //
     }
 }
