@@ -11,15 +11,9 @@ class Vechile extends Model
     use HasFactory;
     
     protected $fillable= [
-        'driverId',
+        'type',
         'licensePlate',
-        'type'
     ];
 
-    public function driver()
-    {
-        return $this->belongsTo(Driver::class, 'driverId', 'id');
-    }
-    
 
 }

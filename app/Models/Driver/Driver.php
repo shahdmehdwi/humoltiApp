@@ -9,6 +9,7 @@ class Driver extends Model
 {
     protected $fillable=[
         'name',
+        'vechileId',
         'email',
         'password',
         'imageUrl',
@@ -21,6 +22,11 @@ class Driver extends Model
         'password',
         'remember_token',
     ];
+    
+    public function vechile()
+    {
+        return $this->belongsTo(Vechile::class, 'vechileId', 'id');
+    }
     
 
    

@@ -24,9 +24,8 @@ class vechileController extends Controller
     public function store(Request $request)
     {
         $input= $request->validate([
-            'driverId'=>'required','numeric',
-            'licensePlate'=>'required','string',
             'type'=>'required','string',
+            'licensePlate'=>'required','string',
         ]);
         
         Vechile::create($input);
