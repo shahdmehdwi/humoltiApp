@@ -2,7 +2,8 @@
 
 namespace App\Http\Resources\Driver;
 
-use App\Http\Resources\Admin\vechileResource;
+
+use App\Http\Resources\Admin\vehicleResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -24,8 +25,7 @@ class driverResource extends JsonResource
                 'phoneNumber'=> $this->phoneNumber,
                 'SecondaryPhoneNumber'=> $this->SecondaryNumber,
                 'location'=> $this->location,
-                'vechileId'=>vechileResource::collection($this->vechileId),
-
+                'vehicleId'=>vehicleResource::collection($this->vehicleId),
             ];
     }
 }

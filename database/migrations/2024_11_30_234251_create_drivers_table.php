@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
-            $table->integer('vechileId');
+            $table->integer('vehicleId');
             $table->string('name',15);
             $table->string('email')->unique();
             $table->string('password');

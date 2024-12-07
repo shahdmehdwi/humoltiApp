@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class vechileRequest extends FormRequest
+class vehicleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,6 @@ class vechileRequest extends FormRequest
     {
         return  [
             'id' =>$this->id,
-            'driverId' =>$this->driverId,
             'licensePlate' =>$this->licensePlate,
             'type' =>$this->type,
         ];

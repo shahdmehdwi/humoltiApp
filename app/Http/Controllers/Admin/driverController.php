@@ -23,7 +23,7 @@ class driverController extends Controller
      {
          $input= $request->validate([
 
-             'vechileId'=>['required','numeric'],
+             'vehicleId'=> 'required | numeric',
              'name'=>['required'],
              'email'=>['required','email'],
              'password'=>['required'],

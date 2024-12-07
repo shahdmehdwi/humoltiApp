@@ -2,14 +2,14 @@
 
 namespace App\Models\Driver;
 
-use App\Models\Admin\Vechile;
+use App\Models\Admin\Vehicle;
 use Illuminate\Database\Eloquent\Model;
 
 class Driver extends Model
 {
     protected $fillable=[
         'name',
-        'vechileId',
+        'vehicleId',
         'email',
         'password',
         'imageUrl',
@@ -23,9 +23,9 @@ class Driver extends Model
         'remember_token',
     ];
     
-    public function vechile()
+    public function vehicle()
     {
-        return $this->belongsTo(Vechile::class, 'vechileId', 'id');
+        return $this->belongsTo(Vehicle::class, 'vehicleId', 'id');
     }
     
 

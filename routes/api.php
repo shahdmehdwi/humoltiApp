@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\categoryController;
 use App\Http\Controllers\Admin\driverController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\paymentController;
-use App\Http\Controllers\Admin\vechileController;
+use App\Http\Controllers\Admin\vehicleController;
 use App\Http\Controllers\Customer\orderController as CustomerOrderController;
 use App\Http\Controllers\Driver\orderController as DriverOrderController;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ Route::apiResource('ads', advertisementController::class);
 Route::apiResource('order', orderController::class);
 Route::apiResource('order', CustomerOrderController::class);
 Route::apiResource('order', DriverOrderController::class);
-Route::apiResource('vechile', vechileController::class);
+Route::apiResource('vehicle', vehicleController::class);
 
 
 

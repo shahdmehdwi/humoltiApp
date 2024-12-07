@@ -5,7 +5,7 @@ namespace App\Http\Resources\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class vechileResource extends JsonResource
+class vehicleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +18,6 @@ class vechileResource extends JsonResource
     {
         return  [
             'id' =>$this->id,
-            'driverId' =>$this->driverId,
             'licensePlate' =>$this->licensePlate,
             'type' =>$this->type,
         ];
