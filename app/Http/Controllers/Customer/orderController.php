@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Customer\orderResource;
 use Illuminate\Http\Request;
 use App\Models\Customer\Order;
+use GuzzleHttp\Promise\Create;
 
 class orderController extends Controller
 {
@@ -14,7 +15,7 @@ class orderController extends Controller
      */
     public function index()
     {
-        $orders= Order::all();
+        $orders=Order::all();
         return orderResource::collection($orders);
     }
 
@@ -23,7 +24,19 @@ class orderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $input= $request->validate([
+            'pickUpLocation'=>'required',
+            'deliveryLocation'=>'required',
+            'distance'=>'required|numeric',
+            
+        ]);
+        
+        $order= new Order();
+        
+        $input['price']=$order->calculatePrice( $input['distance']);
+        Order::Create($input);
+     return response()->json(['message'=> 'tmam']);
     }
 
     /**
@@ -40,7 +53,11 @@ class orderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $input=$request->validated();
+        $order= Order::findOrFail($id);
+        $order->update($input);
+   
+        return response()->json(['message'=>'order is updated successfully']);
     }
 
     /**
@@ -48,6 +65,8 @@ class orderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $order= Order::findOrFail($id);
+        $order->delete();
+        return response()->json(['message'=>'order is deleted Successfully']);
     }
 }

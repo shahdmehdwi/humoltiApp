@@ -19,6 +19,10 @@ class orderResource extends JsonResource
                 'id' =>$this->id,
                 'pickUpLocation' =>$this->pickUpLocation,
                 'deliveryLocation'=>$this->deliveryLocation,
+                'distance'=>$this->distance,
+                'price'=>$this->price,
+
+
             ];
     }
 }

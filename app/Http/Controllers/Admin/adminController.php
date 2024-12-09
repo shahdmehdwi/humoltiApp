@@ -54,7 +54,7 @@ class adminController extends Controller
 
       return response()->json(['message'=>'admin is updated successfully']);
     }
- 
+
     
      /**
       * Remove the specified resource from storage.

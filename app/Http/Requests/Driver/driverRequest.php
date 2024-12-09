@@ -22,6 +22,7 @@ class driverRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'vechileId'=> 'required',
             'name'=> 'required','string',
             'email' => 'required|email|regex:/^driver_.*@/i',
             'password'=> 'required',

@@ -23,8 +23,9 @@ class vehicleRequest extends FormRequest
     {
         return  [
             'id' =>$this->id,
-            'licensePlate' =>$this->licensePlate,
             'type' =>$this->type,
+            'licensePlate' =>$this->licensePlate,
+        
         ];
     }
 }

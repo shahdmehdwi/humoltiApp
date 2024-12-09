@@ -23,7 +23,7 @@ class driverController extends Controller
      {
          $input= $request->validate([
 
-             'vehicleId'=> 'required | numeric',
+             'vehicleId'=> 'required | numeric | exists:vehicles,id'  ,
              'name'=>['required'],
              'email'=>['required','email'],
              'password'=>['required'],
@@ -32,7 +32,7 @@ class driverController extends Controller
              'SecondaryNumber'=>['nullable'],
              'location'=>['required'],
          ]);
-         
+         $input['email']='driver_'.$input['email'];
          Driver::create($input);
          return response()->json(['message'=>'creating driver successfully']);
      }

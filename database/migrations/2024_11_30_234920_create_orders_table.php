@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('pickUpLocation');
             $table->string('deliveryLocation');
+            $table->double('distance');
             $table->double('price');
             $table->timestamps();
         });

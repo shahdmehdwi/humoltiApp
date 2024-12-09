@@ -19,8 +19,15 @@ class customer extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+        {
+            $input= $request->validate([
+                'name'=>['required'],
+                'email'=>['required','email'],
+                'password'=>'required',
+                'imageUrl'=>'nullable',
+                'location'=>'required',
+
+            ]);
     }
 
     /**
@@ -28,7 +35,7 @@ class customer extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

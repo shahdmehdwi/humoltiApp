@@ -21,8 +21,8 @@ Route::apiResource('driver', driverController::class);
 Route::apiResource('payment', paymentController::class);
 Route::apiResource('category', categoryController::class);
 Route::apiResource('ads', advertisementController::class);
-Route::apiResource('order', orderController::class);
-Route::apiResource('order', CustomerOrderController::class);
+Route::apiResource('orderCC', orderController::class);
+Route::apiResource('ordercx', CustomerOrderController::class);
 Route::apiResource('order', DriverOrderController::class);
 Route::apiResource('vehicle', vehicleController::class);
 
