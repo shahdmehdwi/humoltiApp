@@ -14,14 +14,20 @@ class vehicleResource extends JsonResource
      */
     public function toArray(Request $request): array
 
-{
     {
-        return  [
-            'id' =>$this->id,
-            'licensePlate' =>$this->licensePlate,
-            'type' =>$this->type,
-        ];
-}
+
+        return [
+            'id' => $this->id,
+            'type' => $this->type,
+            'licensePlate' => $this->licensePlate,
+
+    ];
+    }
+
+    public function mapInto($resource)
+    {
+        // Customize the resource here if needed
+        return $resource;
+    }
 }
 
-}

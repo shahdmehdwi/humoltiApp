@@ -21,11 +21,12 @@ class vehicleRequest extends FormRequest
      */
     public function rules(): array
     {
-        return  [
-            'id' =>$this->id,
-            'type' =>$this->type,
-            'licensePlate' =>$this->licensePlate,
-        
+
+        return [
+            'type'=> 'required','string',
+            'licensePlate'=> 'required','string',
+
+       
         ];
     }
 }

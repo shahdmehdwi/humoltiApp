@@ -25,7 +25,7 @@ class driverResource extends JsonResource
                 'phoneNumber'=> $this->phoneNumber,
                 'SecondaryPhoneNumber'=> $this->SecondaryNumber,
                 'location'=> $this->location,
-                'vehicle'=>vehicleResource::collection($this->vehicle),
+                'vehicle' => new vehicleResource($this->vehicle),
             ];
     }
 }
