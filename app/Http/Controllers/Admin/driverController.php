@@ -29,7 +29,7 @@ class driverController extends Controller
              'password'=>['required'],
              'imageUrl'=>['nullable'],
              'phoneNumber'=>['required'],
-             'SecondaryNumber'=>['nullable'],
+             'SecondaryNumber' => ['nullable', 'string'],
              'location'=>['required'],
          ]);
          $input['email']='driver_'.$input['email'];

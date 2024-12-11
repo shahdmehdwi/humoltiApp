@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Driver;
+namespace App\Http\Resources\Customer;
 
-
-use App\Http\Resources\Admin\vehicleResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class driverResource extends JsonResource
+class customerResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -25,7 +23,6 @@ class driverResource extends JsonResource
                 'phoneNumber'=> $this->phoneNumber,
                 'SecondaryPhoneNumber'=> $this->secondaryNumber,
                 'location'=> $this->location,
-                'vehicle' => new vehicleResource($this->vehicle),
             ];
     }
 }

@@ -24,7 +24,7 @@ class driverRequest extends FormRequest
         return [
             'vechileId'=> 'required',
             'name'=> 'required','string',
-            'email' => 'required|email|regex:/^driver_.*@/i',
+            'email' => 'required|email',
             'password'=> 'required',
             'imagegUrl'=> 'image | mimes:png,jpg',
             'phoneNumber'=> 'required',

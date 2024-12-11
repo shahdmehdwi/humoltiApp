@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Customer\customerResource;
+use App\Models\Customer\Customer;
 use Illuminate\Http\Request;
 
-class customer extends Controller
+class customerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $customers= Customer::all();
+        return customerResource::collection($customers);
     }
 
     /**
@@ -21,13 +24,18 @@ class customer extends Controller
     public function store(Request $request)
         {
             $input= $request->validate([
-                'name'=>['required'],
-                'email'=>['required','email'],
-                'password'=>'required',
+                'name'=>'required','string',
+                'email'=>'required','email',
+                'password'=>'required','string',
+                'phoneNumber'=>'required','string',
+                'secondaryNumber'=>'nullable','string',
                 'imageUrl'=>'nullable',
-                'location'=>'required',
+                'location'=>'required','string',
 
             ]);
+
+            Customer::create($input);
+            return response()->json(['message'=>'creating customer successfully']);
     }
 
     /**

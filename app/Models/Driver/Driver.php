@@ -3,6 +3,7 @@
 namespace App\Models\Driver;
 
 use App\Models\Admin\Vehicle;
+use App\Models\Customer\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Driver extends Model
@@ -16,6 +17,7 @@ class Driver extends Model
         'phoneNumber',
         'SecondaryNumber',
         'location',
+
     ];
 
     protected $hidden = [
@@ -26,6 +28,11 @@ class Driver extends Model
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class,'vehicleId','id');
+    }
+
+    public function orderDriver()
+    {
+        return $this->hasMany(Order::class, 'driverId');
     }
     
 
@@ -39,6 +46,8 @@ class Driver extends Model
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

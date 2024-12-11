@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\adminController;
 use App\Http\Controllers\Admin\advertisementController;
 use App\Http\Controllers\Admin\categoryController;
+use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\driverController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\paymentController;
@@ -22,9 +23,14 @@ Route::apiResource('payment', paymentController::class);
 Route::apiResource('category', categoryController::class);
 Route::apiResource('ads', advertisementController::class);
 Route::apiResource('adminorder', orderController::class);
+
+Route::apiResource('customer', CustomerController::class);
 Route::apiResource('customerorder', CustomerOrderController::class);
+
 Route::apiResource('driverorder', DriverOrderController::class);
 Route::apiResource('vehicle', vehicleController::class);
+Route::post('/orders/{orderId}/assign', [CustomerOrderController::class, 'assignDriverToOrder']);
+
 
 
 

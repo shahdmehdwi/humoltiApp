@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Customer\orderResource;
 use Illuminate\Http\Request;
 use App\Models\Customer\Order;
+use App\Models\Driver\Driver;
 use GuzzleHttp\Promise\Create;
 
 class orderController extends Controller
@@ -26,18 +27,24 @@ class orderController extends Controller
     {
 
         $input= $request->validate([
+            'customerId'=>'required',
+            'categoryId'=>'required',
+            'paymentId'=>'required',
+            'distance'=>'required|numeric',
             'pickUpLocation'=>'required',
             'deliveryLocation'=>'required',
             'distance'=>'required|numeric',
             
         ]);
         
-        $order= new Order();
+        $order = Order::create($input);
+        Order::create($input);
+        return response()->json(['message'=>'creating order successfully']);
         
-        $input['price']=$order->calculatePrice( $input['distance']);
-        Order::Create($input);
-     return response()->json(['message'=> 'tmam']);
     }
+
+    
+
 
     /**
      * Display the specified resource.
