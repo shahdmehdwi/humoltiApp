@@ -108,21 +108,5 @@ else if(Admin::where('email', $email)->first())
 
 }
 
-private function determineGuard($email)
-{
-    // Logic to determine the guard based on the email 
-    // (e.g., check against driver, customer, admin tables)
-
-    // Example using DB facade (adjust according to your table structure)
-    if (Admin::where('email', $email)->exists()) {
-        return 'driver';
-    } elseif (Driver::where('email', $email)->exists()) {
-        return 'customer';
-    } elseif (Customer::where('email', $email)->exists()) {
-        return 'admin';
-    } else {
-        return 'default_guard'; // Or handle the case where no matching guard is found
-    }
-}
 
 }
