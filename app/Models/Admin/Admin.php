@@ -5,13 +5,20 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Admin extends Authenticatable implements JWTSubject
+
 {
+    use Notifiable;
     
     protected $fillable=[
         'name',
         'email',
         'password',
+        'otp',
         'imageUrl',
     ];
 

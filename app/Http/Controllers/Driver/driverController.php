@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Driver;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\advertisementResource;
+use App\Models\Admin\Advertisement;
 use Illuminate\Http\Request;
 
 class driverController extends Controller
@@ -12,8 +14,9 @@ class driverController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $advertisements=Advertisement::all();
+        return advertisementResource::collection($advertisements);  
+      }
 
     /**
      * Store a newly created resource in storage.

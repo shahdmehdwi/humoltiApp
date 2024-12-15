@@ -8,6 +8,7 @@ use App\Http\Resources\Admin\vehicleResource;
 use App\Models\Admin\Vehicle;
 use Illuminate\Http\Request;
 
+
 class vehicleController extends Controller
 {
     /**

@@ -21,21 +21,28 @@ class customerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-        {
-            $input= $request->validate([
-                'name'=>'required','string',
-                'email'=>'required','email',
-                'password'=>'required','string',
-                'phoneNumber'=>'required','string',
-                'secondaryNumber'=>'nullable','string',
-                'imageUrl'=>'nullable',
-                'location'=>'required','string',
-
-            ]);
-
-            Customer::create($input);
-            return response()->json(['message'=>'creating customer successfully']);
+ 
+    public function registeration(Request $request)
+    {
+       //validation
+       $input= $request->validate([
+           'name'=>'required','string',
+           'email'=>'required','email',
+           'password'=>'required','string',
+           'phoneNumber'=>'required','string',
+           'secondaryNumber'=>'nullable','string',
+           'imageUrl'=>'nullable',
+           'location'=>'required','string',
+        ]);
+       $customer=Customer::where('email',$input['email'])->first();
+    
+       if(!$customer) 
+    {
+       Customer::create($input);
+    
+    }
+       return response()->json(['message'=>'creating customer successfully']);
+    
     }
 
     /**

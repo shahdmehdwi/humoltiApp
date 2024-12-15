@@ -5,14 +5,18 @@ namespace App\Models\Driver;
 use App\Models\Admin\Vehicle;
 use App\Models\Customer\Order;
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Driver extends Model
+class Driver extends Authenticatable implements JWTSubject
 {
     protected $fillable=[
         'name',
         'vehicleId',
         'email',
         'password',
+        'otp',
         'imageUrl',
         'phoneNumber',
         'SecondaryNumber',

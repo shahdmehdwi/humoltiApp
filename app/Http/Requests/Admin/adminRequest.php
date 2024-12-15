@@ -24,8 +24,7 @@ class adminRequest extends FormRequest
         {
             return [
                 'name'=> 'required','string',
-                'email' => 'required|email|regex:/^admin_.*@/i',
-                'password'=> 'required',
+                'email'=> 'required|email',
                 'imageUrl'=> 'image | mimes:png,jpg'
            
             ];

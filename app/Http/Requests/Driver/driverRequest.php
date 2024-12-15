@@ -26,6 +26,7 @@ class driverRequest extends FormRequest
             'name'=> 'required','string',
             'email' => 'required|email',
             'password'=> 'required',
+            'otp'=> 'required',
             'imagegUrl'=> 'image | mimes:png,jpg',
             'phoneNumber'=> 'required',
             'SecondaryNumber' => 'nullable|string',

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name',15);
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('otp')->nullable();
             $table->string('imageUrl')->nullable();
             $table->string('phoneNumber',10);
             $table->string('secondaryNumber', 10)->nullable(); // this line for the optional second number
