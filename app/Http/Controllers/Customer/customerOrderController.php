@@ -21,7 +21,7 @@ class customerOrderController extends Controller
     {
        $orders=Order::where('customerId',auth('customer')->id())->get()->load('orderDetails');
        $orderId= Order::latest()->first()->id;
-       AutoFailOrderJob::dispatch(3)->delay(delay: now()->addMinutes(value: 1));
+       AutoFailOrderJob::dispatch($orderId)->delay(delay: now()->addMinutes(value: 1));
        return response()->json(['data'=>$orders]);
    }
 
