@@ -15,7 +15,6 @@ class orderResource extends JsonResource
     public function toArray(Request $request): array
     {
         {
-
                 return [
                     'id' => $this->id,
                     'customerId' => $this->customerId,
@@ -29,5 +28,6 @@ class orderResource extends JsonResource
             ];
     }
 }
+
 }
 

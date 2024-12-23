@@ -8,7 +8,7 @@ use App\Http\Resources\Admin\advertisementResource;
 use App\Models\Admin\Advertisement;
 use Illuminate\Http\Request;
 
-class advertisementController extends Controller
+class adminAdvertisementController extends Controller
 {
     /**
      * Display a listing of the resource.

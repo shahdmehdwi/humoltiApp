@@ -13,21 +13,22 @@ use Illuminate\Routing\Controllers\Middleware;
 
 
 
-   
-    class   AuthController extends Controller implements \Illuminate\Routing\Controllers\HasMiddleware
+   class   AuthController extends Controller implements \Illuminate\Routing\Controllers\HasMiddleware
+
+{
+    public static function middleware(): array
     {
-        public static function middleware(): array
-        {
-            return [
-                new Middleware(middleware: 'auth:guard', except: ['login']),
-            ];
-        }
+        return [
+            new Middleware(middleware: 'auth:guard', except: ['login']),
+        ];
+    } 
 
     /**
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function login()
     {
         $credentials = request(['email', 'password']);
@@ -67,10 +68,6 @@ use Illuminate\Routing\Controllers\Middleware;
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function refresh()
-    {
-        return $this->respondWithToken(auth('guard')->refresh());
-    }
 
     /**
      * Get the token array structure.

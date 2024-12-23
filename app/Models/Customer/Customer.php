@@ -11,7 +11,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Customer extends Authenticatable implements JWTSubject
 
 {
-    use Notifiable;
 
     protected $fillable=[
         'name',

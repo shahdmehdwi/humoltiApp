@@ -46,35 +46,24 @@ return [
         ],
 
 
-     
-
-        'guard' => [
-            'driver' => 'jwt',
-            'provider' => 'admins',
-
-        ],
-
-      
-
         
-
-
         'admin' => [
             'driver' => 'jwt',
             'provider' => 'admins',
         ],
+       
 
         'customer' => [
             'driver' => 'jwt',
             'provider' => 'customers',
-            
-            ],
+        ],
 
         'driver' => [
             'driver' => 'jwt',
             'provider' => 'drivers',
             
             ],
+
         ],
 
     /*

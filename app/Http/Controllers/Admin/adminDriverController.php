@@ -8,7 +8,7 @@ use App\Http\Resources\Driver\driverResource;
 use Illuminate\Http\Request;
 use App\Models\Driver\Driver;
 
-class driverController extends Controller
+class adminDriverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,23 +19,7 @@ class driverController extends Controller
         return driverResource::collection($drivers);
      }
  
-     public function store(Request $request)
-     {
-         $input= $request->validate([
-
-             'vehicleId'=> 'required | numeric | exists:vehicles,id'  ,
-             'name'=>['required'],
-             'email'=>['required','email'],
-             'password'=>['required'],
-             'imageUrl'=>['nullable'],
-             'phoneNumber'=>['required'],
-             'SecondaryNumber' => ['nullable', 'string'],
-             'location'=>['required'],
-         ]);
-         $input['email']='driver_'.$input['email'];
-         Driver::create($input);
-         return response()->json(['message'=>'creating driver successfully']);
-     }
+    
  
      public function show(string $id)
      {
@@ -66,4 +50,33 @@ class driverController extends Controller
           $driver->delete();
           return response()->json(['message'=>'driver is deleted Successfully']);
       }
+
+
+
+      public function registeration(Request $request)
+     {
+        //validation
+        $input= $request->validate([
+            'vehicleId'=> 'required | numeric | exists:vehicles,id',
+            'name'=>'required',
+            'email'=>'required','email',
+            'password'=>'required',
+            'imageUrl'=>'nullable',
+            'phoneNumber'=>'required',
+            'SecondaryNumber' => 'nullable', 'string',
+            'location'=>'required',
+        ]);
+        $input['email']='driver_'.$input['email'];
+        $driver=Driver::where('email',$input['email'])->first();
+     
+        if(!$driver) 
+     {
+         Driver::create($input);
+         return response()->json(['message'=>'Registeration is added successfully']);
+ 
+     }
+        return response()->json(['message'=>'Driver is found']);
+     
+     }
+     
   }  

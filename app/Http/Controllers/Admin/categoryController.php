@@ -21,18 +21,6 @@ class categoryController extends Controller
     }
     
 
-    public function selectByType(Request $request) {
-          
-        $query= Category::query();
-        if (request()->has('type'))
-        {
-            $query->where('type','LIKE',$request->type,'%');
-        }
-        $categories=$query->get();
-        return response()->json(['data'=>$categories]);
-        
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -72,5 +60,21 @@ class categoryController extends Controller
        $category= Category::findOrFail($id);
        $category->delete();
        return response()->json(['message'=>'category is deleted successfully']);
+    }
+
+
+
+
+
+    public function selectByType(Request $request) {
+          
+        $query= Category::query();
+        if (request()->has('type'))
+        {
+            $query->where('type','LIKE',$request->type,'%');
+        }
+        $categories=$query->get();
+        return response()->json(['data'=>$categories]);
+        
     }
 }

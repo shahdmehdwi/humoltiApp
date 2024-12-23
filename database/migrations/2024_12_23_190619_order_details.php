@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('customerId');
-            $table->integer('driverId');
-            $table->integer('categorytId');
-            $table->integer('paymentId');
-            $table->string('status');
+            $table->integer('orderId');
+            $table->string('pickUpLocation');
+            $table->string('deliveryLocation');
+            $table->double('distance');
+            $table->double('price');
             $table->timestamps();
+
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        //
     }
 };

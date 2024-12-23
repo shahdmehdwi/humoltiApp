@@ -5,7 +5,7 @@ namespace App\Models\Customer;
 use App\Models\Admin\Category;
 use App\Models\Admin\Payment;
 use App\Models\Driver\Driver;
-use App\orderTrait;
+use App\Models\Customer\OrderDetails;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -16,13 +16,13 @@ class Order extends Model
         'driverId',
         'categorytId',
         'paymentId',
-        'pickUpLocation',
-        'deliveryLocation',
-        'distance',
-        'price',
-
-
+        'status',
     ];
+
+    public function orderDetails()
+    {
+        return $this->hasMany(orderDetails::class,'orderId','id');
+    }
 
     public function customer()
     {
