@@ -73,7 +73,7 @@ class customerOrderController extends Controller
            'paymentId'=>$input['paymentId'],
            'status'=>'waiting'
         ]);
-        AutoFailOrderJob::dispatch(3)->delay(delay: now()->addMinutes(value: 1));
+        AutoFailOrderJob::dispatch($orderId)->delay(delay: now()->addMinutes(value: 1));
         return response()->json(['message'=>'order is loading']);
 
     }
